@@ -120,8 +120,8 @@ const MessageWrapper = styled.div`
   height: 20rem;
   padding-left: 2.5rem;
   padding-right: 2.5rem;
-  background-image: ${({ postIt }) => `url(${getPostItImage(postIt)})`};
-  /* background: ${({ postIt }) => `url()`}; */
+  /* background-image: ${({ postIt }) => `url(${getPostItImage(postIt)})`}; */
+  background: ${({ postIt }) => `url(${getPostItImage(postIt)})`};
 `;
 
 const Title = styled.div`
