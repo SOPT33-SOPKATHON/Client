@@ -1,11 +1,31 @@
-import React from 'react';
-import styled from 'styled-components';
-import { LightIcon } from '../../assets';
-import { theme } from '../../styles/theme';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { PostIt1, PostIt2, PostIt3 } from '../../assets';
+import { useEffect, useState } from 'react';
+
+import { LightIcon } from '../../assets';
+import React from 'react';
+import axios from 'axios';
+import styled from 'styled-components';
+import { theme } from '../../styles/theme';
 import { useParams } from 'react-router-dom';
+
+const getPostItImage = (postNum) => {
+  switch (postNum) {
+    case 1:
+      return PostIt1;
+    case 2:
+      return PostIt2;
+    case 3:
+      return PostIt3;
+  }
+};
+
+const Message = ({ title, content, postTime, postIt }) => (
+  <MessageWrapper postIt={postIt}>
+    <Title>{title}</Title>
+    <Content>{content}</Content>
+    <Date>{postTime}</Date>
+  </MessageWrapper>
+);
 
 const Main = () => {
   const [congData, setCongData] = useState([]); //개별 쪽지에 대한 정보
@@ -58,25 +78,6 @@ const Main = () => {
 
 export default Main;
 
-const Message = ({ title, content, postTime, postIt }) => (
-  <MessageWrapper postIt={postIt}>
-    <Title>{title}</Title>
-    <Content>{content}</Content>
-    <Date>{postTime}</Date>
-  </MessageWrapper>
-);
-
-const getPostItImage = (postNum) => {
-  switch (postNum) {
-    case 1:
-      return PostIt1;
-    case 2:
-      return PostIt2;
-    case 3:
-      return PostIt3;
-  }
-};
-
 const Container = styled.div`
   display: flex;
   position: relative;
@@ -120,6 +121,7 @@ const MessageWrapper = styled.div`
   padding-left: 2.5rem;
   padding-right: 2.5rem;
   background-image: ${({ postIt }) => `url(${getPostItImage(postIt)})`};
+  /* background: ${({ postIt }) => `url()`}; */
 `;
 
 const Title = styled.div`

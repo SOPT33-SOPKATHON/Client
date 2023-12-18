@@ -77,7 +77,7 @@ const CreateEvent = () => {
       <DateInput
         value={date}
         onChange={(e) => handleDateChange(e)}
-        placeholder="0000.00.00"
+        placeholder="0000/00/00"
         inputHeight="4.4rem"
       ></DateInput>
       <Title>설명</Title>
