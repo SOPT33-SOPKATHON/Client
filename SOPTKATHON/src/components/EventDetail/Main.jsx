@@ -158,8 +158,6 @@ const MessageWrapper = styled.div`
   padding-left: 2.5rem;
   padding-right: 2.5rem;
   z-index: 2;
-  /* background-image: ${({ $postIt }) => `url(${getPostItImage($postIt)})`}; */
-  background: ${({ $postIt }) => `url(${getPostItImage($postIt)})`};
 `;
 
 const Title = styled.div`
