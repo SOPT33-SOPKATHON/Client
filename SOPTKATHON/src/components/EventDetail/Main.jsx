@@ -1,3 +1,4 @@
+import { ImgPostitClover, ImgPostitCong, ImgPostitHeart } from '../../assets/icons/icon';
 import { PostIt1, PostIt2, PostIt3 } from '../../assets';
 import { useEffect, useState } from 'react';
 
@@ -23,11 +24,38 @@ const Message = ({ title, content, postTime, postIt }) => {
   console.log('MESSAGE: ' + postIt);
   console.log(typeof postIt);
   return (
-    <MessageWrapper $postIt={postIt}>
-      <Title>{title}</Title>
-      <Content>{content}</Content>
-      <Date>{postTime}</Date>
-    </MessageWrapper>
+    <>
+      {postIt === 1 && (
+        <MessageBox>
+          <Clover />
+          <MessageWrapper>
+            <Title>{title}</Title>
+            <Content>{content}</Content>
+            <Date>{postTime}</Date>
+          </MessageWrapper>
+        </MessageBox>
+      )}
+      {postIt === 2 && (
+        <MessageBox>
+          <Cong />
+          <MessageWrapper>
+            <Title>{title}</Title>
+            <Content>{content}</Content>
+            <Date>{postTime}</Date>
+          </MessageWrapper>
+        </MessageBox>
+      )}
+      {postIt === 3 && (
+        <MessageBox>
+          <Heart />
+          <MessageWrapper>
+            <Title>{title}</Title>
+            <Content>{content}</Content>
+            <Date>{postTime}</Date>
+          </MessageWrapper>
+        </MessageBox>
+      )}
+    </>
   );
 };
 
@@ -123,10 +151,13 @@ const MessageContainer = styled.div`
 `;
 
 const MessageWrapper = styled.div`
+  position: relative;
+
   width: 16.6rem;
   height: 20rem;
   padding-left: 2.5rem;
   padding-right: 2.5rem;
+  z-index: 2;
   /* background-image: ${({ $postIt }) => `url(${getPostItImage($postIt)})`}; */
   background: ${({ $postIt }) => `url(${getPostItImage($postIt)})`};
 `;
@@ -156,4 +187,29 @@ const Date = styled.div`
 
   ${theme.fonts.caption};
   color: ${theme.colors.darkGrey};
+`;
+
+const MessageBox = styled.div`
+  position: relative;
+`;
+
+const Cong = styled(ImgPostitCong)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+`;
+
+const Heart = styled(ImgPostitHeart)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+`;
+
+const Clover = styled(ImgPostitClover)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
 `;
