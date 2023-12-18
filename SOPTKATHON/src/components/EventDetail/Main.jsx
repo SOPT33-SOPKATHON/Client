@@ -19,13 +19,17 @@ const getPostItImage = (postNum) => {
   }
 };
 
-const Message = ({ title, content, postTime, postIt }) => (
-  <MessageWrapper postIt={postIt}>
-    <Title>{title}</Title>
-    <Content>{content}</Content>
-    <Date>{postTime}</Date>
-  </MessageWrapper>
-);
+const Message = ({ title, content, postTime, postIt }) => {
+  console.log('MESSAGE: ' + postIt);
+  console.log(typeof postIt);
+  return (
+    <MessageWrapper $postIt={postIt}>
+      <Title>{title}</Title>
+      <Content>{content}</Content>
+      <Date>{postTime}</Date>
+    </MessageWrapper>
+  );
+};
 
 const Main = () => {
   const [congData, setCongData] = useState([]); //개별 쪽지에 대한 정보
@@ -61,15 +65,18 @@ const Main = () => {
           <MessageCount>{congData.length}개</MessageCount>의 축하노트를 받았어요.
         </AlertText>
         <MessageContainer>
-          {congData.map((celeb) => (
-            <Message
-              key={celeb.celeb_id}
-              title={celeb.nickname}
-              content={celeb.celeb_content}
-              postTime={celeb.post_time}
-              postIt={celeb.post_it}
-            />
-          ))}
+          {congData.map((celeb) => {
+            console.log(celeb.post_it);
+            return (
+              <Message
+                key={celeb.celeb_id}
+                title={celeb.nickname}
+                content={celeb.celeb_content}
+                postTime={celeb.post_time}
+                postIt={celeb.post_it}
+              />
+            );
+          })}
         </MessageContainer>
       </Container>
     </>
@@ -120,8 +127,8 @@ const MessageWrapper = styled.div`
   height: 20rem;
   padding-left: 2.5rem;
   padding-right: 2.5rem;
-  /* background-image: ${({ postIt }) => `url(${getPostItImage(postIt)})`}; */
-  background: ${({ postIt }) => `url(${getPostItImage(postIt)})`};
+  /* background-image: ${({ $postIt }) => `url(${getPostItImage($postIt)})`}; */
+  background: ${({ $postIt }) => `url(${getPostItImage($postIt)})`};
 `;
 
 const Title = styled.div`
