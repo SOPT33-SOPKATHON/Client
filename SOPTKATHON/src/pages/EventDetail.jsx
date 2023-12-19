@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+
 import Header from '../components/EventDetail/Header';
 import Main from '../components/EventDetail/Main';
 import MainNone from '../components/EventDetail/MainNone';
 import { WriteButton } from '../assets';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { useNavigate, Navigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 export const EventDetail = () => {
   const [detailData, setDetailData] = useState([]);
@@ -55,4 +56,5 @@ const FixedButton = styled.img`
   position: fixed;
   bottom: 2.5rem;
   right: 1.5rem;
+  z-index: 3;
 `;
