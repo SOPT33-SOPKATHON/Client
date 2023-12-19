@@ -45,10 +45,8 @@ const EventList = () => {
           <EmptyEventWrapper>아직 생성한 이벤트가 없어요.</EmptyEventWrapper>
         )}
       </EventListContainer>
-
       <BtnWrapper>
-        {' '}
-        <PlusBtn onClick={handlePlusBtn}></PlusBtn>
+        <PlusBtnIc onClick={handlePlusBtn}></PlusBtnIc>
       </BtnWrapper>
     </EventListWrapper>
   );
@@ -93,16 +91,14 @@ const EmptyEventWrapper = styled.div`
   color: ${({ theme }) => theme.colors.mediumGrey};
 `;
 
-// const PlusBtnIc=styled(PlusBtn)`
-
-// `
+const PlusBtnIc = styled(PlusBtn)``;
 const BtnWrapper = styled.div`
-  width: 100%;
-
   position: fixed;
-  bottom: 2.5rem;
-  left: 78rem;
-  z-index: 1;
 
+  width: 34.3rem;
+  height: 6rem;
+  bottom: 3rem;
+  display: flex;
+  justify-content: end;
   cursor: pointer;
 `;
